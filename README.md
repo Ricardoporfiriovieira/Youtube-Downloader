@@ -12,7 +12,7 @@
 </p> <br>
 
  <p>
-  Para começar eu primeiro construi a interface gráfica utilizando o pysimplegui, essa biblioteca é bem intuitiva, e o princípio é bem simples, basicamente para cada janela que você deseja utilizar será criada uma função, dentro dessa função será criada uma lista com todos os elementos contidos na janela, na linha 9 adicionei um texto para guiar o usuário, na linha 10 adicionei uma área para o usuário adicionar uma informação e nessa área eu defini uma "key" uma espécie de apelido para mais tarde conseguir referenciar esse input com mais facilidade, na linha 11 eu defini 2 botões.
+Primeiro construi a interface gráfica utilizando o pysimplegui, essa biblioteca é bem intuitiva e o princípio é bem simples, basicamente para cada janela que você deseja utilizar será criada uma função, dentro dessa função será criada uma lista com todos os elementos contidos na janela, na linha 9 adicionei um texto para guiar o usuário, na linha 10 adicionei uma área para o usuário adicionar uma informação e nessa área eu defini uma "key" uma espécie de apelido para mais tarde conseguir referenciar esse input com mais facilidade, na linha 11 eu defini 2 botões.
 </p> 
 <p align="center">
   <img src="https://github.com/Ricardoporfiriovieira/imagens-youtubedownloader/blob/main/print_1.png" alt="imagem demonstrativa 1">
