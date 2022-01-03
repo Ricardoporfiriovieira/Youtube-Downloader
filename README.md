@@ -1,4 +1,4 @@
-<h1>Youtube Downloader Documentação</h1>
+<h1 align="center">Youtube Downloader Documentação</h1>
 
 <p>
   Para começar, eu utilizei 2 bibliotecas principais o pytube, que será responsável por o que acontece no backend e o pysimplegui que é responsável pelo front end.
@@ -6,8 +6,12 @@
 <p>
   O pysimplegui poderia ter sido substituído pelo tkinter que é uma biblioteca de interface gráfica muito mais completa, porém como o próprio nome já diz o pysimplegui é bem simples além do fato da sua documentação ser ótima o que é um ponto muito importante pra mim que estou aprendendo a usar a biblioteca enquanto desenvolvo esse projeto.
 </p>
+<p align="center">
  <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/PySimpleGUI_logo.png" alt="pysimplegui icone"> 
- <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/42d43def1c8634a6c158def4846894bc2afd542b/68747470733a2f2f6173736574732e6e69636b666963616e6f2e636f6d2f67682d7079747562652e6d696e2e737667" alt="pytube icone"><br>
+ <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/42d43def1c8634a6c158def4846894bc2afd542b/68747470733a2f2f6173736574732e6e69636b666963616e6f2e636f6d2f67682d7079747562652e6d696e2e737667" alt="pytube icone">
+</p> 
+  <br>
+ 
 <p>
   Para começar eu primeiro construi a interface gráfica utilizando o pysimplegui, essa biblioteca é bem intuitiva, e o princípio é bem simples, basicamente para cada janela que você deseja utilizar será criada uma função, dentro dessa função será criada uma lista com todos os elementos contidos na janela, na linha 9 adicionei um texto para guiar o usuário, na linha 10 adicionei uma área para o usuário adicionar uma informação e nessa área eu defini uma "key" uma espécie de apelido para mais tarde conseguir referenciar esse input com mais facilidade, na linha 11 eu defini 2 botões.
 </p> 
