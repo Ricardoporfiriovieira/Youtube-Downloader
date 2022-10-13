@@ -1,5 +1,62 @@
 # Youtube Downloader Documentação
 
+Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu computador.
+
+# Guia de Instalação
+
+* **Primeiro Utilize o comando:**
+
+    ```
+
+        git clone https://github.com/Ricardoporfiriovieira/Youtube-Downloader
+
+    ```
+  * para baixar todos os arquivos necessários, após isso baixe todas as dependências do projeto.
+
+<hr>
+
+* **Baixando as dependências do projeto**
+  
+  * Todas as dependências do Projeto estão listadas em um arquivo chamado **requirements.txt** Utilize o comando:
+  
+    ```
+
+      pip install -r requirements.txt 
+
+    ```
+  
+  * para baixar todas as dependências.
+
+  * Esse comando serve principalmente para adicionar as bibliotecas Pysimplegui e Pytube ao seu computador.
+
+<hr>
+
+* # Como Usar a Aplicação:
+
+  * Após completar todos os passos anteriores com sucesso Você precisa apenas ir no terminal e digitar o comando:
+
+    ```
+      python baixar.py
+    ```
+
+  * esse comando irá abrir a interface do programa que irá solicitar a **URL** de um vídeo do youtube.
+
+  * <p align="center">
+    <img src="https://github.com/Ricardoporfiriovieira/imagens-youtubedownloader/blob/main/print_1.png" alt="imagem demonstrativa 1">
+    </p>
+
+  * após inserir a url do vídeo desejado, a interface irá mostrar 2 checkbox Com as opções **MP3** e **MP4** Escolha em qual formato você deseja baixar a mídia em questão e clique no botão **Download**.
+
+  * <p align="center">
+      <img src="https://github.com/Ricardoporfiriovieira/imagens-youtubedownloader/blob/main/print_4.png" alt="imagem demonstrativa 3">
+    </p>
+
+  * A mídia em questão Será baixada na mesma pasta Onde o Arquivo **baixar.py** se encontra.
+
+
+
+
+# Sobre o projeto
 <p>
   Para começar, eu utilizei 2 bibliotecas principais o pytube, que será responsável por o que acontece no backend e o pysimplegui que é responsável pelo front end.
 </p>
