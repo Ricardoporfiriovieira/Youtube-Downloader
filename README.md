@@ -2,7 +2,16 @@
 
 Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu computador.
 
-# Guia de Instalação
+ * <h2> LINKS RÁPIDOS</h2>
+
+    <ol>
+      <li> <a href="#instalacao"> GUIA DE INSTALAÇÃO </a> 
+      <li> <a href="#dependencias"> BAIXAR DEPENDÊNCIAS </a> 
+      <li> <a href="#comousar"> COMO USAR A APLICAÇÃO </a> 
+      <li> <a href="#varios"> BAIXANDO VARIOS ARQUIVOS COM 1 CLIQUE!!! </a>
+    </ol>
+
+# <div id="instalacao"> Guia de Instalação </div>
 
 * **Primeiro Utilize o comando:**
 
@@ -15,7 +24,7 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
 
 <hr>
 
-* **Baixando as dependências do projeto**
+* <div id="dependencias"> <b>Baixando as dependências do projeto</b> </div>
   
   * Todas as dependências do Projeto estão listadas em um arquivo chamado **requirements.txt** Utilize o comando:
   
@@ -31,7 +40,7 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
 
 <hr>
 
-* # Como Usar a Aplicação:
+* # <div id="comousar">Como Usar a Aplicação: </div>
 
   * Após completar todos os passos anteriores com sucesso Você precisa apenas ir no terminal e digitar o comando:
 
@@ -55,17 +64,17 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
 
 <hr>
 
-* # BAIXANDO VÁRIOS ARQUIVOS COM APENAS 1 CLIQUE!!!
+* # <div id="varios">BAIXANDO VÁRIOS ARQUIVOS COM APENAS 1 CLIQUE!!!</div>
 
   * uma das melhores funcionalidades desse projeto é a possibilidade de baixar diversos arquivos com apenas **1 CLIQUE!**
 
   * para fazer isso vá até o youtube e pesquise ou crie uma playlist de vídeos, Após isso clique no botão para compartilhar a playlist e copie o link da playlist.
 
-    ![alt text](https://imgur.com/a/lkF5X5u)
+    ![alt text](https://github.com/Ricardoporfiriovieira/imagens-youtubedownloader/blob/main/youtube%20downloader.png)
 
   * A interface do programa irá identificar que você deseja fazer o download de uma playlist e irá mostrar a quantidade de arquivos disponíveis para download.
 
-    ![alt text](https://imgur.com/a/c34qzEo)
+    ![alt text](https://github.com/Ricardoporfiriovieira/imagens-youtubedownloader/blob/main/youtubedownload2.png)
 
     após isso **selecione o formato do arquivo que deseja baixar** e clique em **Download!**
 
