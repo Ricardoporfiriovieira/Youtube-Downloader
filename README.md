@@ -53,6 +53,21 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
 
   * A mídia em questão Será baixada na mesma pasta Onde o Arquivo **baixar.py** se encontra.
 
+<hr>
+
+* # BAIXANDO VÁRIOS ARQUIVOS COM APENAS 1 CLIQUE!!!
+
+  * uma das melhores funcionalidades desse projeto é a possibilidade de baixar diversos arquivos com apenas **1 CLIQUE!**
+
+  * para fazer isso vá até o youtube e pesquise ou crie uma playlist de vídeos, Após isso clique no botão para compartilhar a playlist e copie o link da playlist.
+
+    ![alt text](https://imgur.com/a/lkF5X5u)
+
+  * A interface do programa irá identificar que você deseja fazer o download de uma playlist e irá mostrar a quantidade de arquivos disponíveis para download.
+
+    ![alt text](https://imgur.com/a/c34qzEo)
+
+    após isso **selecione o formato do arquivo que deseja baixar** e clique em **Download!**
 
 
 
