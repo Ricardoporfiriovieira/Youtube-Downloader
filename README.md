@@ -4,12 +4,12 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
 
  * <h2> LINKS RÁPIDOS</h2>
 
-    <ol>
+    <ul>
       <li> <a href="#instalacao"> GUIA DE INSTALAÇÃO </a> 
       <li> <a href="#dependencias"> BAIXAR DEPENDÊNCIAS </a> 
       <li> <a href="#comousar"> COMO USAR A APLICAÇÃO </a> 
       <li> <a href="#varios"> BAIXANDO VARIOS ARQUIVOS COM 1 CLIQUE!!! </a>
-    </ol>
+    </ul>
 
 # <div id="instalacao"> Guia de Instalação </div>
 
