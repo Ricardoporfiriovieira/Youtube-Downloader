@@ -18,9 +18,14 @@ Esse é um projeto que tem como Objetivo Baixar arquivos Mp3 e Mp4 no seu comput
     ```
 
         git clone https://github.com/Ricardoporfiriovieira/Youtube-Downloader
-        cd Youtube-Downloader
 
     ```
+    
+    ```
+        cd Youtube-Downloader
+    
+    ```
+    
   * para baixar todos os arquivos necessários, após isso baixe todas as dependências do projeto.
 
 <hr>
