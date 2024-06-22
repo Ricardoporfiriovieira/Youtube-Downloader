@@ -1,191 +1,112 @@
-from PySimpleGUI.PySimpleGUI import Popup, read_all_windows
-from pytube import YouTube, Playlist
+from PySimpleGUI import (
+    read_all_windows, 
+    Popup, 
+    Text, 
+    Input, 
+    Button, 
+    Checkbox, 
+    Window, 
+    theme, 
+    WINDOW_CLOSED, 
+    one_line_progress_meter, 
+    popup
+)
+from pytube import YouTube, Playlist, request
 from pytube.exceptions import RegexMatchError, AgeRestrictedError
-from pytube import request
 from os import path, rename
-from PySimpleGUI import Text, Input, Button, Checkbox, Window, theme, WINDOW_CLOSED, one_line_progress_meter, popup
+
 
 def progress_callback(stream, chunk, bytes_remaining):
-
-    try:
-
-        size = video.filesize
-        progress = int(((size - bytes_remaining) / size) * 100)
-        theme('DarkAmber')
-        if not one_line_progress_meter('Youtube Installer', progress, 100, (f'Executando o seu download...'), orientation='h', size=(20,20)):
-            Popup('Fechando o Porgrama...')
-            exit()
-            
-
-    except NameError:
-
-        size = video_baixar.filesize
-        progress = int(((size - bytes_remaining) / size) * 100)
-        theme('DarkAmber')
-        if not one_line_progress_meter('Executando o seu Download', progress, 100, (f'Executando o {c}º download de {len(p.video_urls)} arquivos'), orientation='h', size=(20,20)):
-            Popup('Fechando o Porgrama...')
-            exit()
-
+    size = stream.filesize
+    progress = int(((size - bytes_remaining) / size) * 100)
+    if not one_line_progress_meter('Youtube Installer', progress, 100, 'Executando o seu download...', orientation='h', size=(20, 20)):
+        Popup('Fechando o Programa...')
+        exit()
 
 
 def complete_callback(stream, file_handle):
-
-    try:
-
-        layout = [[Text(f'Seu {c}º Download de {len(p.video_urls)} foi Concluido com sucesso')],
-              [Text('Aperte no Botão "Cancelar" para Cancelar o Download.')],
-              [Button('Continuar'), Button('Cancelar')]]
-
-        window = Window('Window Title', layout, enable_close_attempted_event=True, auto_close=True, auto_close_duration=2)
-
-        event, values = window.read()
-        if event == 'Cancelar':
-            exit()
-    except NameError:
-
-        layout = [[Text(f'Seu Download foi Concluido com sucesso!')],
+    layout = [[Text(f'Seu download foi concluído com sucesso!')],
               [Button('Ok')]]
-        window = Window('Window Title', layout, enable_close_attempted_event=True, auto_close=True, auto_close_duration=2)
+    window = Window('Download Completo', layout, auto_close=True, auto_close_duration=2)
+    event, _ = window.read()
+    if event == WINDOW_CLOSED:
+        window.close()
 
-        event, values = window.read()
+
+def download_video(link, is_playlist, format):
+    if is_playlist:
+        p = Playlist(link)
+        for idx, url in enumerate(p.video_urls, start=1):
+            download_single_video(url, format, idx, len(p.video_urls))
+    else:
+        download_single_video(link, format)
 
 
+def download_single_video(link, format, current_index=1, total_files=1):
+    yt = YouTube(link)
+    if format == 'mp4':
+        video = yt.streams.get_highest_resolution()
+        yt.register_on_complete_callback(complete_callback)
+        yt.register_on_progress_callback(progress_callback)
+        file_path = video.download()
+        rename(file_path, path.splitext(file_path)[0] + '_video.mp4')
+    elif format == 'mp3':
+        audio = yt.streams.filter(only_audio=True).first()
+        yt.register_on_complete_callback(complete_callback)
+        yt.register_on_progress_callback(progress_callback)
+        file_path = audio.download()
+        rename(file_path, path.splitext(file_path)[0] + '.mp3')
 
-def janela1():
 
+def create_main_window():
     theme('DarkAmber')
-    tela = [
-    [Text('Coloque aqui a url do vídeo: ')],
-    [Input(key='input')],
-    [Button('Continuar'), Button('Sair')]
+    layout = [
+        [Text('Coloque aqui a URL do vídeo:')],
+        [Input(key='input')],
+        [Button('Continuar'), Button('Sair')]
     ]
-
-    return Window('Youtube Downloader', layout=tela, finalize=True)
-
+    return Window('Youtube Downloader', layout=layout, finalize=True)
 
 
-def janela2():
+def create_format_window(title):
     theme('DarkAmber')
-    tela = [
-        [Text(key='mostra_titulo')],
-        [Text('Escolha o Formato do seu Download.')],
+    layout = [
+        [Text(title, key='mostra_titulo')],
+        [Text('Escolha o formato do seu download:')],
         [Checkbox('Mp4', key='mp4'), Checkbox('Mp3', key='mp3')],
         [Button('Download'), Button('Voltar')]
     ]
-
-    return Window('Youtube Downloader', layout=tela, finalize=True)
-
+    return Window('Youtube Downloader', layout=layout, finalize=True)
 
 
-
-jn1, jn2 = janela1(), None
+jn1, jn2 = create_main_window(), None
 
 while True:
-
     window, event, values = read_all_windows()
-    print(event, 'read')
 
-    if event == WINDOW_CLOSED or event == 'Sair':
+    if event in (WINDOW_CLOSED, 'Sair'):
         break
 
     if window == jn1 and event == 'Continuar':
-
         link = values['input']
-        jn2 = janela2()
-        jn1.hide()
-        window = jn2
-
         try:
-
-            mostrarTitulo = YouTube(link)
-            window['mostra_titulo'].update(mostrarTitulo.title)
-
+            yt = YouTube(link)
+            title = yt.title
+            is_playlist = False
         except RegexMatchError:
-
-            c = 0
-            lista = []
             p = Playlist(link)
-            window['mostra_titulo'].update(f'Deseja fazer o Download de uma Playlist com {len(p.video_urls)} arquivos?')
+            title = f'Deseja fazer o download de uma playlist com {len(p.video_urls)} arquivos?'
+            is_playlist = True
+
+        jn2 = create_format_window(title)
+        jn1.hide()
 
     if window == jn2 and event == 'Voltar':
-
-        jn1 = janela1()
         jn2.hide()
+        jn1.un_hide()
 
-    if event == 'Download': 
+    if window == jn2 and event == 'Download':
+        format = 'mp4' if values['mp4'] else 'mp3'
+        download_video(link, is_playlist, format)
 
-        if values['mp4'] == True:
-
-            try:
-
-                request.default_range_size = 1048576  
-                yt_video = YouTube(link)
-                video = yt_video.streams.get_highest_resolution()
-                yt_video.register_on_complete_callback(complete_callback)
-                yt_video.register_on_progress_callback(progress_callback)
-                som = video.download()
-                nome, ext = path.splitext(som)
-                novo_som = nome + '_video' + '.mp4'
-                rename(som, novo_som)
-
-            except RegexMatchError:
-
-                request.default_range_size = 1048576  
-                p = Playlist(link)
-
-                for url in p.video_urls:
-
-                    try:
-
-                        c += 1
-                        video_playlist = YouTube(url)
-                        lista.append(video_playlist.title) 
-                        video_baixar = video_playlist.streams.get_highest_resolution()
-                        video_playlist.register_on_complete_callback(complete_callback)
-                        video_playlist.register_on_progress_callback(progress_callback) 
-                        video_baixar.download()
-                        
-                    except AgeRestrictedError:
-
-                        popup('Esse vídeo tem restrição de idade porfavor tente outra url.',auto_close=True ,auto_close_duration=2)
-                        pass
-
-
-        if values['mp3'] == True:
-
-            try:
-
-                yt = YouTube(link)
-                audio = yt.streams.filter(only_audio=True).first()
-                yt.register_on_complete_callback(complete_callback)
-                yt.register_on_progress_callback(progress_callback)
-                som = audio.download()
-                print(som)
-                nome, ext = path.splitext(som)
-                novo_som = nome + '.mp3'
-                rename(som, novo_som)
-
-            except RegexMatchError:
-
-                request.default_range_size = 1048576  
-                p_music = Playlist(link)
-
-                for url in p_music.video_urls:
-
-                    try:
-
-                        c += 1
-                        yt_playlist = YouTube(url)
-                        video_baixar = yt_playlist.streams.filter(only_audio=True).first()
-                        yt_playlist.register_on_complete_callback(complete_callback)
-                        yt_playlist.register_on_progress_callback(progress_callback)
-                        som_playlist = video_baixar.download()
-                        print(som_playlist)
-                        nome, ext = path.splitext(som_playlist)
-                        novo_som = nome + '.mp3'
-                        rename(som_playlist, novo_som)
-
-                    except AgeRestrictedError:
-
-                        popup('Esse vídeo tem restrição de idade porfavor tente outra url.',auto_close=True ,auto_close_duration=2)
-                        pass
+window.close()
